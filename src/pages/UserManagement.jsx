@@ -4,7 +4,6 @@ import { RoleBadge } from '../components/RoleSelect'
 import { format } from 'date-fns'
 
 /* ---------------- MOCK DATABASE ---------------- */
-
 const MOCK_USERS = Array.from({ length: 137 }, (_, i) => ({
   userId: `U${1000 + i}`,
   name: `User ${i + 1}`,
@@ -21,7 +20,6 @@ const MOCK_USERS = Array.from({ length: 137 }, (_, i) => ({
 const PAGE_SIZE = 50
 
 /* ---------------- COMPONENT ---------------- */
-
 const UserManagement = () => {
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(true)
@@ -34,17 +32,12 @@ const UserManagement = () => {
     loadUsers()
   }, [])
 
-  /* ---------------- LOAD USERS ---------------- */
-
   const loadUsers = async (lastKey = null) => {
     try {
       setLoading(true)
-
       await new Promise((res) => setTimeout(res, 500))
-
       const startIndex = lastKey || 0
       const paginated = MOCK_USERS.slice(startIndex, startIndex + PAGE_SIZE)
-
       setUsers(paginated)
       setLastEvaluatedKey(startIndex + PAGE_SIZE)
       setHasMore(startIndex + PAGE_SIZE < MOCK_USERS.length)
@@ -55,25 +48,20 @@ const UserManagement = () => {
     }
   }
 
-  /* ---------------- SEARCH ---------------- */
-
   const handleSearch = async () => {
     if (!searchTerm.trim()) {
       loadUsers()
       return
     }
-
     try {
       setLoading(true)
       await new Promise((res) => setTimeout(res, 400))
-
       const results = MOCK_USERS.filter(
         (user) =>
           user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
           user.userId.toLowerCase().includes(searchTerm.toLowerCase())
       )
-
       setUsers(results)
       setHasMore(false)
     } catch (error) {
@@ -83,22 +71,16 @@ const UserManagement = () => {
     }
   }
 
-  /* ---------------- ROLE FILTER ---------------- */
-
   const handleRoleFilter = async (role) => {
     setSelectedRole(role)
-
     if (role === 'all') {
       loadUsers()
       return
     }
-
     try {
       setLoading(true)
       await new Promise((res) => setTimeout(res, 400))
-
       const results = MOCK_USERS.filter((user) => user.role === role)
-
       setUsers(results)
       setHasMore(false)
     } catch (error) {
@@ -108,26 +90,17 @@ const UserManagement = () => {
     }
   }
 
-  /* ---------------- BAN USER ---------------- */
-
   const handleBanUser = async (userId) => {
     if (!confirm('Are you sure you want to ban this user?')) return
-
     try {
       await new Promise((res) => setTimeout(res, 300))
-
       const updated = MOCK_USERS.map((user) =>
         user.userId === userId
-          ? {
-              ...user,
-              status: { isActive: false, isBanned: true, isSuspended: false },
-            }
+          ? { ...user, status: { isActive: false, isBanned: true, isSuspended: false } }
           : user
       )
-
       const index = MOCK_USERS.findIndex((u) => u.userId === userId)
       MOCK_USERS[index] = updated[index]
-
       loadUsers()
       alert('User banned successfully')
     } catch (error) {
@@ -136,24 +109,16 @@ const UserManagement = () => {
     }
   }
 
-  /* ---------------- ACTIVATE USER ---------------- */
-
   const handleActivateUser = async (userId) => {
     try {
       await new Promise((res) => setTimeout(res, 300))
-
       const updated = MOCK_USERS.map((user) =>
         user.userId === userId
-          ? {
-              ...user,
-              status: { isActive: true, isBanned: false, isSuspended: false },
-            }
+          ? { ...user, status: { isActive: true, isBanned: false, isSuspended: false } }
           : user
       )
-
       const index = MOCK_USERS.findIndex((u) => u.userId === userId)
       MOCK_USERS[index] = updated[index]
-
       loadUsers()
       alert('User activated successfully')
     } catch (error) {
@@ -165,50 +130,54 @@ const UserManagement = () => {
   const filteredUsers = users
 
   return (
-    <div className="space-y-6">
-      {/* Search and Filter Bar */}
-      <div className="bg-white p-4 rounded-lg shadow space-y-4">
-        <div className="flex flex-col sm:flex-row gap-4">
-          <div className="flex-1 flex gap-2">
-            <input
-              type="text"
-              placeholder="Search by name, email, or user ID..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-            />
+    <div className="space-y-6 px-2 md:px-0 pb-10">
+      {/* Search and Filter Bar - Responsive Stack */}
+      <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 space-y-4">
+        <div className="flex flex-col lg:flex-row gap-4">
+          <div className="flex-1 flex flex-col sm:flex-row gap-2">
+            <div className="relative flex-1">
+              <input
+                type="text"
+                placeholder="Search name, email, or ID..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                className="w-full pl-4 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-[14px]"
+              />
+            </div>
             <button
               onClick={handleSearch}
-              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center gap-2"
+              className="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center justify-center gap-2 font-bold text-[14px] transition-all active:scale-95"
             >
-              <Search size={20} />
+              <Search size={18} />
               Search
             </button>
           </div>
 
           <div className="flex gap-2 items-center">
-            <Filter size={20} className="text-gray-500" />
-            <select
-              value={selectedRole}
-              onChange={(e) => handleRoleFilter(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="all">All Roles</option>
-              <option value="user">User</option>
-              <option value="host">Host</option>
-              <option value="agency_owner">Agency Owner</option>
-              <option value="admin">Admin</option>
-              <option value="super_admin">Super Admin</option>
-            </select>
+            <div className="flex items-center gap-2 bg-gray-50 border border-gray-300 rounded-lg px-3 py-1 w-full lg:w-auto">
+              <Filter size={18} className="text-gray-500" />
+              <select
+                value={selectedRole}
+                onChange={(e) => handleRoleFilter(e.target.value)}
+                className="bg-transparent py-2 outline-none text-[14px] w-full"
+              >
+                <option value="all">All Roles</option>
+                <option value="user">User</option>
+                <option value="host">Host</option>
+                <option value="agency_owner">Agency Owner</option>
+                <option value="admin">Admin</option>
+                <option value="super_admin">Super Admin</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Users Table */}
-      <div className="bg-white shadow rounded-lg overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-800">
+      {/* Users Table - Scroll Safety */}
+      <div className="bg-white shadow-sm rounded-xl border border-gray-100 overflow-hidden">
+        <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
+          <h3 className="text-[16px] font-bold text-slate-800">
             All Users ({filteredUsers.length})
           </h3>
         </div>
@@ -220,31 +189,61 @@ const UserManagement = () => {
         ) : (
           <>
             <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <tbody className="bg-white divide-y divide-gray-200">
+              <table className="min-w-[800px] w-full text-left">
+                <thead className="bg-gray-50 border-b border-gray-200">
+                  <tr className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-4">User Details</th>
+                    <th className="px-6 py-4">Role</th>
+                    <th className="px-6 py-4">Status</th>
+                    <th className="px-6 py-4">Joined At</th>
+                    <th className="px-6 py-4 text-center">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-100">
                   {filteredUsers.map((user) => (
-                    <tr key={user.userId} className="hover:bg-gray-50">
-                      <td className="px-6 py-4">{user.name}</td>
-                      <td className="px-6 py-4">{user.email}</td>
+                    <tr key={user.userId} className="hover:bg-gray-50/50 transition-colors">
+                      <td className="px-6 py-4">
+                        <div className="flex flex-col">
+                          <span className="font-bold text-slate-700 text-[14px]">{user.name}</span>
+                          <span className="text-gray-400 text-[12px]">{user.email}</span>
+                          <span className="text-[10px] text-blue-500 font-mono">ID: {user.userId}</span>
+                        </div>
+                      </td>
                       <td className="px-6 py-4">
                         <RoleBadge role={user.role} />
                       </td>
                       <td className="px-6 py-4">
-                        {user.status.isBanned ? 'Banned' : 'Active'}
+                        <span className={`px-2 py-1 rounded-full text-[11px] font-bold ${
+                          user.status.isBanned 
+                            ? 'bg-red-50 text-red-600' 
+                            : 'bg-green-50 text-green-600'
+                        }`}>
+                          {user.status.isBanned ? 'BANNED' : 'ACTIVE'}
+                        </span>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 text-[13px] text-slate-600">
                         {format(new Date(user.createdAt), 'MMM dd, yyyy')}
                       </td>
-                      <td className="px-6 py-4 space-x-2">
-                        {user.status.isBanned ? (
-                          <button onClick={() => handleActivateUser(user.userId)}>
-                            <CheckCircle size={18} />
-                          </button>
-                        ) : (
-                          <button onClick={() => handleBanUser(user.userId)}>
-                            <Ban size={18} />
-                          </button>
-                        )}
+                      <td className="px-6 py-4">
+                        <div className="flex items-center justify-center">
+                          {user.status.isBanned ? (
+                            <button 
+                              onClick={() => handleActivateUser(user.userId)}
+                              className="p-2 text-green-600 hover:bg-green-50 rounded-lg transition-all"
+                              title="Activate User"
+                            >
+                              <CheckCircle size={20} />
+                            </button>
+                          ) : (
+                            <button 
+                              onClick={() => handleBanUser(user.userId)}
+                              className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-all"
+                              title="Ban User"
+                            >
+                              <Ban size={20} />
+                            </button>
+                          )}
+                        </div>
                       </td>
                     </tr>
                   ))}
@@ -253,22 +252,22 @@ const UserManagement = () => {
             </div>
 
             {hasMore && (
-              <div className="px-6 py-4 border-t border-gray-200 flex justify-between">
+              <div className="px-6 py-4 border-t border-gray-100 bg-gray-50/50 flex flex-col sm:flex-row justify-between items-center gap-4">
                 <button
                   onClick={() => loadUsers()}
-                  disabled={!lastEvaluatedKey}
-                  className="flex items-center gap-2 px-4 py-2 border rounded-lg"
+                  disabled={!lastEvaluatedKey || lastEvaluatedKey <= PAGE_SIZE}
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 rounded-lg bg-white text-[13px] font-bold text-gray-600 hover:bg-gray-100 disabled:opacity-50"
                 >
-                  <ChevronLeft size={20} />
+                  <ChevronLeft size={18} />
                   Previous
                 </button>
                 <button
                   onClick={() => loadUsers(lastEvaluatedKey)}
                   disabled={!hasMore}
-                  className="flex items-center gap-2 px-4 py-2 border rounded-lg"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 border border-blue-600 rounded-lg bg-blue-600 text-white text-[13px] font-bold hover:bg-blue-700 disabled:opacity-50 shadow-sm"
                 >
                   Next
-                  <ChevronRight size={20} />
+                  <ChevronRight size={18} />
                 </button>
               </div>
             )}

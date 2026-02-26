@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { LayoutDashboard, Users, Shield, Store, FileText, BarChart3, LogOut, Menu, X } from 'lucide-react'
+import { LayoutDashboard, Power, CheckCircle2, Landmark, Ticket, Banknote, Ban, FileCheck,  Mail, Gift, Coins, Users, Shield, Store, FileText, LogOut, Menu, X , Medal, DollarSign, Heart, BarChart3} from 'lucide-react'
 import { useState } from 'react'
 
 const Layout = ({ children, user, signOut }) => {
@@ -8,10 +8,27 @@ const Layout = ({ children, user, signOut }) => {
 
   const navigation = [
     { name: 'Dashboard', href: '/', icon: LayoutDashboard },
+    { name: 'Agency Revenue', href: '/agency-revenue', icon: DollarSign },
     { name: 'User Management', href: '/users', icon: Users },
     { name: 'Role Management', href: '/roles', icon: Shield },
+    { name: 'Ranking Management', href: '/rankings', icon: BarChart3 },
+    { name: 'BD Leader Stats', href: '/leader-stats', icon: Users },
+    { name: 'Tribe Management', href: '/tribes', icon: Medal },
+    { name: 'Relationship & CP', href: '/relationships', icon: Heart },
+    { name: 'Recharge Activity', href: '/recharge-activity', icon: Gift },
+    { name: 'Room Management', href: '/room-management', icon: Power },
+    { name: 'Room Invites', href: '/room-invites', icon: Mail },
+    { name: 'Coin Packages', href: '/coin-packages', icon: Coins },
+    { name: 'Finance', href: '/finance', icon: DollarSign },
+    { name: 'Salary Management', href: '/salary-management', icon: Banknote },
+    { name: 'Bank Management', href: '/bank-management', icon: Landmark },
+    { name: 'Top-up Approvals', href: '/topup-approvals', icon: CheckCircle2 },
+    { name: 'Withdrawal Approvals', href: '/withdrawal-approvals', icon: Banknote },
     { name: 'Merchant Management', href: '/merchants', icon: Store },
     { name: 'Applications', href: '/applications', icon: FileText },
+    { name: 'KYC Verification', href: '/kyc-verification', icon: FileCheck },
+    { name: 'Ban Management', href: '/ban-management', icon: Ban },
+    { name: 'Tickets / Reports', href: '/tickets', icon: Ticket },
     { name: 'Analytics', href: '/analytics', icon: BarChart3 },
   ]
 

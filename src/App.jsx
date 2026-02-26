@@ -2,10 +2,27 @@ import { useState, useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 
 import Dashboard from './pages/Dashboard'
+import AgencyRevenue from './pages/AgencyRevenue'
 import UserManagement from './pages/UserManagement'
 import RoleManagement from './pages/RoleManagement'
+import RankingManagement from './pages/RankingManagement'
+import LeaderStats from './pages/LeaderStats'
+import TribeManagement from './pages/TribeManagement'
+import RelationshipCP from './pages/RelationshipCP'
+import RechargeActivity from './pages/RechargeActivity'
+import RoomManagement from './pages/RoomManagement'
+import RoomInvites from './pages/RoomInvites'
+import CoinPackages from './pages/CoinPackages'
+import Finance from './pages/Finance'
+import SalaryManagement from './pages/SalaryManagement'
+import BankManagement from './pages/BankManagement'
+import TopupApprovals from './pages/TopupApprovals'
+import WithdrawalApprovals from './pages/WithdrawalApprovals'
 import MerchantManagement from './pages/MerchantManagement'
 import Applications from './pages/Applications'
+import KYCVerification from './pages/KYCVerification'
+import BanManagement from './pages/BanManagement'
+import Tickets from './pages/Tickets'
 import Analytics from './pages/Analytics'
 import Layout from './components/Layout'
 import Login from './components/Login' // Ab ye dummy login hai
@@ -121,10 +138,27 @@ function App() {
     <Layout user={user} signOut={handleSignOut}>
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/agency-revenue" element={<AgencyRevenue />} />
         <Route path="/users" element={<UserManagement />} />
         <Route path="/roles" element={<RoleManagement />} />
+        <Route path="/rankings" element={<RankingManagement />} />
+        <Route path="/leader-stats" element={<LeaderStats />} />
+        <Route path="/tribes" element={<TribeManagement />} />
+        <Route path="/relationships" element={<RelationshipCP />} />
+        <Route path="/recharge-activity" element={<RechargeActivity />} />
+        <Route path="/room-management" element={<RoomManagement />} />
+        <Route path="/room-invites" element={<RoomInvites />} />
+        <Route path="/coin-packages" element={<CoinPackages />} />
+        <Route path="/finance" element={<Finance />} />
+        <Route path="/salary-management" element={<SalaryManagement />} />
+        <Route path="/bank-management" element={<BankManagement />} />
+        <Route path="/topup-approvals" element={<TopupApprovals />} />
+        <Route path="/withdrawal-approvals" element={<WithdrawalApprovals />} />
         <Route path="/merchants" element={<MerchantManagement />} />
         <Route path="/applications" element={<Applications />} />
+        <Route path="/kyc-verification" element={<KYCVerification />} />
+        <Route path="/ban-management" element={<BanManagement />} />
+        <Route path="/tickets" element={<Tickets />} />
         <Route path="/analytics" element={<Analytics />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

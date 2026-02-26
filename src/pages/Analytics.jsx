@@ -1,323 +1,182 @@
-import { useState, useEffect } from 'react'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts'
-
-const COLORS = ['#1E90FF', '#FFD700', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#EC4899']
+import React, { useState, useEffect } from 'react';
+import { 
+  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer,
+  PieChart, Pie, Cell, Legend
+} from 'recharts';
+import { 
+  Activity, Users, Shield, Star, 
+  DollarSign, Mic2, Gift, FileText 
+} from 'lucide-react';
 
 const Analytics = () => {
-  const [stats, setStats] = useState(null)
-  const [loading, setLoading] = useState(true)
-
-  // Dummy analytics data
-  const dummyStats = {
-    totalUsers: 12547,
-    activeUsers: 10234,
-    bannedUsers: 1243,
-    suspendedUsers: 1070,
-    roleDistribution: {
-      admin: 42,
-      host: 3245,
-      agency: 876,
-      coin_seller: 2341,
-      regular_user: 4567,
-      moderator: 156,
-      guest: 1345
-    },
-    newUsersToday: 89,
-    newUsersThisWeek: 567,
-    newUsersThisMonth: 2341,
-    deletedUsers: 432,
-    verifiedUsers: 8765,
-    unverifiedUsers: 3782,
-    loginCountToday: 1245,
-    averageSessionTime: "8.5 minutes",
-    topRoles: [
-      { role: "regular_user", count: 4567, growth: "+12%" },
-      { role: "host", count: 3245, growth: "+8%" },
-      { role: "coin_seller", count: 2341, growth: "+15%" },
-      { role: "guest", count: 1345, growth: "-3%" }
-    ],
-    monthlyGrowth: [
-      { month: "Jan 2024", users: 11234 },
-      { month: "Feb 2024", users: 11567 },
-      { month: "Mar 2024", users: 11892 },
-      { month: "Apr 2024", users: 12145 },
-      { month: "May 2024", users: 12378 },
-      { month: "Jun 2024", users: 12547 }
-    ],
-    userEngagement: {
-      daily: 4567,
-      weekly: 7890,
-      monthly: 10234
-    }
-  }
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadAnalytics()
-  }, [])
+    const timer = setTimeout(() => setLoading(false), 600);
+    return () => clearTimeout(timer);
+  }, []);
 
-  const loadAnalytics = async () => {
-    setLoading(true)
-    // Simulate API delay
-    setTimeout(() => {
-      setStats(dummyStats)
-      setLoading(false)
-    }, 1000)
-  }
+  // Charts Data
+  const barData = [
+    { name: 'AGENCY OWNER', value: 1 },
+    { name: 'SUPER ADMIN', value: 1 },
+    { name: 'USER', value: 1 },
+  ];
+
+  const pieData = [
+    { name: 'Active Users', value: 3, color: '#3b82f6' },   
+    { name: 'Banned', value: 1, color: '#ef4444' },         
+    { name: 'Suspended', value: 1, color: '#f59e0b' },      
+  ];
 
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
       </div>
-    )
+    );
   }
 
-  // Prepare data for charts
-  const roleData = Object.entries(stats?.roleDistribution || {}).map(([role, count]) => ({
-    name: role.replace('_', ' ').toUpperCase(),
-    value: count,
-  }))
-
-  const statusData = [
-    { name: 'Active', value: stats?.activeUsers || 0 },
-    { name: 'Banned', value: stats?.bannedUsers || 0 },
-    { name: 'Suspended', value: stats?.suspendedUsers || 0 },
-  ]
-
-  const engagementData = [
-    { name: 'Daily', value: stats?.userEngagement?.daily || 0 },
-    { name: 'Weekly', value: stats?.userEngagement?.weekly || 0 },
-    { name: 'Monthly', value: stats?.userEngagement?.monthly || 0 },
-  ]
-
   return (
-    <div className="space-y-6">
-      <div className="bg-white p-6 rounded-lg shadow">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">Platform Analytics</h2>
-        <p className="text-gray-600">Overview of user statistics and platform metrics</p>
-      </div>
-
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-sm font-medium text-gray-600 mb-2">Total Users</h3>
-          <p className="text-3xl font-bold text-blue-600">{stats?.totalUsers?.toLocaleString() || 0}</p>
-          <p className="text-sm text-green-600 mt-2">+{stats?.newUsersToday || 0} today</p>
+    <div className="space-y-6 pb-10 animate-in fade-in duration-500 px-2 md:px-0">
+      
+      {/* 1. TOP HEADER BANNER */}
+      <div className="bg-white p-6 md:p-10 rounded-[32px] border border-gray-100 shadow-sm flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="space-y-2 text-center md:text-left">
+          <div className="flex items-center justify-center md:justify-start gap-3">
+             <Activity className="text-blue-600" size={32} />
+             <h1 className="text-2xl md:text-4xl font-black text-slate-800  uppercase">Platform Analytics</h1>
+          </div>
+          <p className="text-gray-400 font-medium text-sm md:text-lg">Real-time ecosystem metrics and system intelligence</p>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-sm font-medium text-gray-600 mb-2">Active Users</h3>
-          <p className="text-3xl font-bold text-green-600">{stats?.activeUsers?.toLocaleString() || 0}</p>
-          <p className="text-sm text-gray-500 mt-2">{((stats?.activeUsers / stats?.totalUsers) * 100).toFixed(1)}% of total</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-sm font-medium text-gray-600 mb-2">Banned Users</h3>
-          <p className="text-3xl font-bold text-red-600">{stats?.bannedUsers?.toLocaleString() || 0}</p>
-          <p className="text-sm text-gray-500 mt-2">{((stats?.bannedUsers / stats?.totalUsers) * 100).toFixed(1)}% of total</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-sm font-medium text-gray-600 mb-2">Suspended</h3>
-          <p className="text-3xl font-bold text-yellow-600">{stats?.suspendedUsers?.toLocaleString() || 0}</p>
-          <p className="text-sm text-gray-500 mt-2">{((stats?.suspendedUsers / stats?.totalUsers) * 100).toFixed(1)}% of total</p>
+        
+        <div className="bg-blue-600 text-white px-8 py-4 rounded-[20px] shadow-xl shadow-blue-200 text-center min-w-[220px]">
+          <p className="text-[10px] uppercase font-bold  opacity-80 mb-1">System Health</p>
+          <p className="text-xl font-bold">99.9% OPERATIONAL</p>
         </div>
       </div>
 
-      {/* Additional Stats Row */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-sm font-medium text-gray-600 mb-2">Verified Users</h3>
-          <p className="text-2xl font-bold text-purple-600">{stats?.verifiedUsers?.toLocaleString() || 0}</p>
-          <p className="text-sm text-gray-500 mt-2">{((stats?.verifiedUsers / stats?.totalUsers) * 100).toFixed(1)}% verified</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-sm font-medium text-gray-600 mb-2">New This Week</h3>
-          <p className="text-2xl font-bold text-indigo-600">{stats?.newUsersThisWeek?.toLocaleString() || 0}</p>
-          <p className="text-sm text-green-600 mt-2">↑ {((stats?.newUsersThisWeek / stats?.totalUsers) * 100).toFixed(1)}% growth</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-sm font-medium text-gray-600 mb-2">Today's Logins</h3>
-          <p className="text-2xl font-bold text-pink-600">{stats?.loginCountToday?.toLocaleString() || 0}</p>
-          <p className="text-sm text-gray-500 mt-2">Avg. session: {stats?.averageSessionTime}</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-sm font-medium text-gray-600 mb-2">Deleted Users</h3>
-          <p className="text-2xl font-bold text-gray-600">{stats?.deletedUsers?.toLocaleString() || 0}</p>
-          <p className="text-sm text-gray-500 mt-2">All time</p>
-        </div>
+      {/* 2. STATS GRID */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <StatCard label="Total Network" value="3" icon={<Users size={20}/>} iconBg="bg-blue-600" />
+        <StatCard label="Active Pulse" value="3" icon={<Activity size={20}/>} iconBg="bg-emerald-500" />
+        <StatCard label="Restricted" value="0" icon={<Shield size={20}/>} iconBg="bg-red-500" />
+        <StatCard label="Under Review" value="0" icon={<Star size={20}/>} iconBg="bg-amber-500" />
       </div>
 
-      {/* Charts */}
+      {/* 3. SECONDARY STATS */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <StatCard label="Revenue" value="$0.00" subText="Sum of last 200 transactions" icon={<DollarSign size={20}/>} iconBg="bg-emerald-500" />
+        <StatCard label="Rooms" value="1" subText="1 live now" icon={<Mic2 size={20}/>} iconBg="bg-purple-500" />
+        <StatCard label="Gifts" value="0" subText="0 coins in sample" icon={<Gift size={20}/>} iconBg="bg-orange-500" />
+      </div>
+
+      {/* 4. CHARTS SECTION (Role vs Compliance) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Role Distribution */}
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">Role Distribution</h3>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={roleData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" angle={-45} textAnchor="end" height={100} />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="value" fill="#1E90FF" />
-            </BarChart>
-          </ResponsiveContainer>
+        {/* Bar Chart - Role Distribution */}
+        <div className="bg-white p-6 rounded-[28px] border border-gray-100 shadow-sm">
+          <h3 className="text-lg font-black text-slate-800 mb-8 uppercase ">Role Distribution</h3>
+          <div className="h-[300px] w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={barData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
+                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fontSize: 10, fontWeight: 'bold', fill: '#94a3b8'}} />
+                <YAxis axisLine={false} tickLine={false} tick={{fontSize: 10}} />
+                <Tooltip cursor={{fill: 'transparent'}} />
+                <Bar dataKey="value" fill="#3b82f6" radius={[6, 6, 0, 0]} barSize={40} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
 
-        {/* User Status */}
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">User Status</h3>
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={statusData}
-                cx="50%"
-                cy="50%"
-                labelLine={false}
-                label={({ name, value }) => `${name}: ${value}`}
-                outerRadius={80}
-                fill="#8884d8"
-                dataKey="value"
-              >
-                {statusData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                ))}
-              </Pie>
-              <Tooltip />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
-
-        {/* Monthly Growth Chart */}
-        <div className="bg-white p-6 rounded-lg shadow lg:col-span-2">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">User Growth (Last 6 Months)</h3>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={stats?.monthlyGrowth || []}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="users" fill="#10B981" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-
-        {/* User Engagement */}
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">User Engagement</h3>
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={engagementData}
-                cx="50%"
-                cy="50%"
-                labelLine={false}
-                label={({ name, value }) => `${name}: ${value}`}
-                outerRadius={80}
-                fill="#8884d8"
-                dataKey="value"
-              >
-                {engagementData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                ))}
-              </Pie>
-              <Tooltip />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
-
-        {/* Top Roles Table */}
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">Top Roles by Growth</h3>
-          <div className="overflow-x-auto">
-            <table className="min-w-full">
-              <thead>
-                <tr className="border-b">
-                  <th className="text-left py-2">Role</th>
-                  <th className="text-left py-2">Count</th>
-                  <th className="text-left py-2">Growth</th>
-                </tr>
-              </thead>
-              <tbody>
-                {stats?.topRoles?.map((role, index) => (
-                  <tr key={index} className="border-b">
-                    <td className="py-2 capitalize">{role.role.replace('_', ' ')}</td>
-                    <td className="py-2">{role.count.toLocaleString()}</td>
-                    <td className={`py-2 ${role.growth.startsWith('+') ? 'text-green-600' : 'text-red-600'}`}>
-                      {role.growth}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        {/* Rangeen Filled Pie Chart */}
+        <div className="bg-white p-6 md:p-8 rounded-[28px] border border-gray-100 shadow-sm">
+          <h3 className="text-lg font-black text-slate-800 mb-8 uppercase">System Compliance</h3>
+          <div className="h-[300px] w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={pieData}
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={100}
+                  fill="#8884d8"
+                  dataKey="value"
+                  label={({name, percent}) => `${(percent * 100).toFixed(0)}%`}
+                >
+                  {pieData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} stroke="none" />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend verticalAlign="bottom" height={36}/>
+              </PieChart>
+            </ResponsiveContainer>
           </div>
         </div>
       </div>
 
-      {/* Role Details Table */}
-      <div className="bg-white shadow rounded-lg overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-800">Detailed Role Statistics</h3>
+      {/* 5. HIERARCHY INSIGHT TABLE */}
+      <div className="bg-white rounded-[28px] border border-gray-100 shadow-sm overflow-hidden">
+        <div className="p-6 flex justify-between items-center border-b border-gray-50 bg-white sticky top-0">
+          <h3 className="text-lg font-black text-slate-800 uppercase">Detailed Hierarchy Insight</h3>
+          <span className="text-[10px] font-bold bg-blue-50 px-3 py-1.5 rounded-full text-blue-600 uppercase ">Live View</span>
         </div>
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Role
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Count
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Percentage
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Verified
-                </th>
+          <table className="w-full text-left">
+            <thead>
+              <tr className="text-[10px] font-bold text-gray-400 uppercase  bg-gray-50">
+                <th className="px-8 py-4">Hierarchy Level</th>
+                <th className="px-8 py-4 text-center">Live Members</th>
+                <th className="px-8 py-4">Composition</th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {Object.entries(stats?.roleDistribution || {})
-                .sort(([, a], [, b]) => b - a)
-                .map(([role, count]) => (
-                  <tr key={role}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">
-                      {role.replace('_', ' ')}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {count.toLocaleString()}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {((count / stats.totalUsers) * 100).toFixed(1)}%
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {Math.round(count * 0.7).toLocaleString()} (70%)
-                    </td>
-                  </tr>
-                ))}
+            <tbody className="divide-y divide-gray-50">
+              <HierarchyRow label="AGENCY OWNER" value="1" percent="33.3%" color="bg-blue-600" />
+              <HierarchyRow label="SUPER ADMIN" value="1" percent="33.3%" color="bg-blue-500" />
+              <HierarchyRow label="USER" value="1" percent="33.3%" color="bg-blue-400" />
             </tbody>
           </table>
         </div>
       </div>
-
-      {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 rounded-lg shadow text-white">
-          <h4 className="text-sm opacity-90 mb-1">New Users (Today)</h4>
-          <p className="text-3xl font-bold">{stats?.newUsersToday || 0}</p>
-          <p className="text-xs opacity-75 mt-2">↑ 12% from yesterday</p>
-        </div>
-        <div className="bg-gradient-to-r from-green-500 to-green-600 p-6 rounded-lg shadow text-white">
-          <h4 className="text-sm opacity-90 mb-1">Active Users</h4>
-          <p className="text-3xl font-bold">{stats?.userEngagement?.daily?.toLocaleString() || 0}</p>
-          <p className="text-xs opacity-75 mt-2">Daily active users</p>
-        </div>
-        <div className="bg-gradient-to-r from-purple-500 to-purple-600 p-6 rounded-lg shadow text-white">
-          <h4 className="text-sm opacity-90 mb-1">Verification Rate</h4>
-          <p className="text-3xl font-bold">{((stats?.verifiedUsers / stats?.totalUsers) * 100).toFixed(1)}%</p>
-          <p className="text-xs opacity-75 mt-2">{stats?.verifiedUsers?.toLocaleString()} verified users</p>
-        </div>
-      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Analytics
+// --- Helper Components ---
+
+const StatCard = ({ label, value, subText, icon, iconBg }) => (
+  <div className="bg-white p-6 rounded-[24px] border border-gray-100 shadow-sm flex justify-between items-center group hover:border-blue-100 transition-all">
+    <div>
+      <p className="text-[10px] font-bold text-gray-400 uppercase  mb-2">{label}</p>
+      <h3 className="text-3xl font-black text-slate-800">{value}</h3>
+      {subText && <p className="text-[10px] text-gray-400 mt-1">{subText}</p>}
+    </div>
+    <div className={`${iconBg} p-4 rounded-2xl text-white shadow-lg shadow-gray-100 group-hover:scale-110 transition-transform`}>
+      {icon}
+    </div>
+  </div>
+);
+
+const HierarchyRow = ({ label, value, percent, color }) => (
+  <tr className="group hover:bg-gray-50/50 transition-colors">
+    <td className="px-8 py-6">
+      <div className="flex items-center gap-4">
+        <div className="p-2 bg-slate-50 text-blue-600 rounded-lg group-hover:bg-blue-50 group-hover:text-blue-600">
+          <Shield size={16} />
+        </div>
+        <span className="text-sm font-black text-slate-700  uppercase">{label}</span>
+      </div>
+    </td>
+    <td className="px-8 py-6 text-center font-black text-slate-800">{value}</td>
+    <td className="px-8 py-6">
+      <div className="flex items-center gap-4 min-w-[150px]">
+        <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+          <div className={`h-full ${color} rounded-full`} style={{ width: percent }}></div>
+        </div>
+        <span className="text-[11px] font-bold text-slate-400 group-hover:text-blue-600">{percent}</span>
+      </div>
+    </td>
+  </tr>
+);
+
+export default Analytics;
