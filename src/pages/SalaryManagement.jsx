@@ -38,13 +38,13 @@ const SalaryManagement = () => {
             <FileText size={18} className="text-slate-500" />
             <span>Audit trail</span>
           </button>
-          <button className="flex-1 md:flex-none bg-[#93c5fd] text-white px-6 py-2.5 rounded-xl font-bold text-[13px] md:text-[14px] cursor-not-allowed shadow-sm whitespace-nowrap">
+          <button className="flex-1 md:flex-none bg-blue-600 text-white px-6 py-2.5 rounded-xl font-medium text-[13px] md:text-[14px] cursor-not-allowed shadow-sm whitespace-nowrap">
             Payout (0)
           </button>
         </div>
       </div>
 
-      {/* --- SEARCH & STATS BAR (Responsive Wrap) --- */}
+      {/* SEARCH & STATS BAR */}
       <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-wrap items-center gap-3 md:gap-4">
         {/* Search Input */}
         <div className="relative flex-1 min-w-[280px]">
@@ -58,7 +58,7 @@ const SalaryManagement = () => {
 
         {/* Stats Row */}
         <div className="flex items-center gap-3 w-full lg:w-auto">
-          {/* Stats: Hosts Found */}
+      
           <div className="flex-1 lg:flex-none flex items-center justify-center gap-2 bg-[#eff6ff] text-[#2563eb] px-4 py-2.5 rounded-2xl font-bold text-[13px] md:text-[14px] whitespace-nowrap">
             <Users size={18} />
             <span>0 Hosts Found</span>
@@ -73,7 +73,7 @@ const SalaryManagement = () => {
         </div>
       </div>
 
-      {/* --- TABLE SECTION (Responsive Scroll) --- */}
+      {/*  TABLE SECTION*/}
       <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[1000px]">

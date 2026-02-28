@@ -33,7 +33,7 @@ const WithdrawalApprovals = () => {
   return (
     <div className="space-y-6 animate-in fade-in duration-500 text-[#334155] px-4 md:px-0 pb-10">
       
-      {/* --- HEADER SECTION (Mobile Optimized) --- */}
+      {/* --- HEADER SECTION --- */}
       <div className="flex flex-col md:flex-row justify-between items-start gap-4">
         <div className="flex items-start gap-3">
           <Banknote className="text-blue-600 mt-1 shrink-0" size={26} strokeWidth={2.5} />
@@ -45,7 +45,7 @@ const WithdrawalApprovals = () => {
           </div>
         </div>
 
-        {/* --- TABS (Scrollable on Mobile) --- */}
+        {/* --- TABS --- */}
         <div className="flex bg-gray-50 p-1 rounded-xl gap-1 w-full md:w-auto overflow-x-auto no-scrollbar">
           {tabs.map((tab) => (
             <button
@@ -63,7 +63,7 @@ const WithdrawalApprovals = () => {
         </div>
       </div>
 
-      {/* --- TABLE SECTION (Responsive Scroll) --- */}
+      {/* --- TABLE SECTION --- */}
       <div className="bg-white rounded-[24px] border border-gray-150 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[800px]">
@@ -77,7 +77,7 @@ const WithdrawalApprovals = () => {
               </tr>
             </thead>
             <tbody>
-              {/* Dynamic Empty State based on Active Tab */}
+              
               <tr className="border-t border-gray-50/50">
                 <td colSpan="5" className="py-24 text-center">
                    <p className="text-[15px] md:text-[16px] font-normal text-gray-400 ">

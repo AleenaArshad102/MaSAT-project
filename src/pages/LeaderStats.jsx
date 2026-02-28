@@ -46,7 +46,7 @@ const LeaderStats = () => {
             </div>
 
             <button 
-              className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#93adef] text-white px-6 py-2 rounded-lg font-bold text-[14px] hover:bg-[#7e9ae8] transition-all shadow-sm active:scale-95"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-2 rounded-lg font-medium text-[14px] hover:bg-[#7e9ae8] transition-all shadow-sm active:scale-95"
             >
               <Search size={18} />
               Load Stats

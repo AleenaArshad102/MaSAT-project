@@ -174,7 +174,7 @@ const RoleManagement = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header Stats */}
+      
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="bg-gradient-to-r from-primary-blue to-primary-gold p-6 rounded-lg shadow-lg text-white">
           <div className="flex items-center justify-between">
@@ -217,7 +217,7 @@ const RoleManagement = () => {
         </div>
       </div>
 
-      {/* Search */}
+      
       <div className="bg-card p-4 rounded-lg shadow-lg border border-primary-gold/20">
         <div className="flex gap-2">
           <input
@@ -233,7 +233,7 @@ const RoleManagement = () => {
         </div>
       </div>
 
-      {/* Users List */}
+      
       <div className="space-y-3">
         {filteredUsers.map(user => {
           const isExpanded = expandedUsers[user.userId]
@@ -339,7 +339,7 @@ const RoleManagement = () => {
         })}
       </div>
 
-      {/* Assign Role Dialog */}
+      
       {assignDialogOpen && selectedUserForAssign && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={handleCloseAssignDialog}>
           <div className="bg-card rounded-lg shadow-2xl p-6 max-w-md w-full mx-4" onClick={(e) => e.stopPropagation()}>

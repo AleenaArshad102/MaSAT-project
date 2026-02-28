@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { LayoutDashboard, Power, CheckCircle2, Landmark, Ticket, Banknote, Ban, FileCheck,  Mail, Gift, Coins, Users, Shield, Store, FileText, LogOut, Menu, X , Medal, DollarSign, Heart, BarChart3} from 'lucide-react'
+import { LayoutDashboard, Power, CheckCircle2, Settings,  Crown, Landmark, Ticket, Banknote, Ban, FileCheck,  Mail, Gift, Coins, Users, Shield, Store, FileText, LogOut, Menu, X , Medal, DollarSign, Heart, BarChart3} from 'lucide-react'
 import { useState } from 'react'
 
 const Layout = ({ children, user, signOut }) => {
@@ -18,13 +18,15 @@ const Layout = ({ children, user, signOut }) => {
     { name: 'Recharge Activity', href: '/recharge-activity', icon: Gift },
     { name: 'Room Management', href: '/room-management', icon: Power },
     { name: 'Room Invites', href: '/room-invites', icon: Mail },
+    { name: 'VIP & SVIP Levels', href: '/vip-levels', icon: Crown },
     { name: 'Coin Packages', href: '/coin-packages', icon: Coins },
+    { name: 'Settings', href: '/settings', icon: Settings },
+    { name: 'Merchant Management', href: '/merchants', icon: Store },
     { name: 'Finance', href: '/finance', icon: DollarSign },
     { name: 'Salary Management', href: '/salary-management', icon: Banknote },
     { name: 'Bank Management', href: '/bank-management', icon: Landmark },
     { name: 'Top-up Approvals', href: '/topup-approvals', icon: CheckCircle2 },
     { name: 'Withdrawal Approvals', href: '/withdrawal-approvals', icon: Banknote },
-    { name: 'Merchant Management', href: '/merchants', icon: Store },
     { name: 'Applications', href: '/applications', icon: FileText },
     { name: 'KYC Verification', href: '/kyc-verification', icon: FileCheck },
     { name: 'Ban Management', href: '/ban-management', icon: Ban },

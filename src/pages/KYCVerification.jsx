@@ -4,7 +4,7 @@ import {
   XCircle, Shield, ChevronLeft, ChevronRight 
 } from 'lucide-react'
 
-/* ---------------- MOCK DATA GENERATOR ( KYC Records) ---------------- */
+/*  MOCK DATA GENERATOR ( KYC Records) */
 const MOCK_KYC = Array.from({ length: 6 }, (_, i) => ({
   id: 50010 + i,
   name: i % 2 === 0 ? `User ${i + 1}` : `Merchant ${i + 1}`,
@@ -27,7 +27,7 @@ const KYCVerification = () => {
     return () => clearTimeout(timer);
   }, [activeTab]);
 
-  // Filtering Logic based on Tabs
+
   const filteredData = MOCK_KYC.filter(user => {
     if (activeTab === 'All') return true;
     return user.status.toLowerCase() === activeTab.toLowerCase();
@@ -49,7 +49,7 @@ const KYCVerification = () => {
   return (
     <div className="space-y-6 animate-in fade-in duration-500 font-sans text-slate-700 pb-10 px-2 md:px-0">
       
-      {/* 1. TOP STATS CARDS (Responsive Grid) */}
+      {/* 1. TOP STATS CARDS */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
         {[
           { label: 'Pending', count: 1, icon: <FileText className="text-amber-500" size={20} />, color: 'text-amber-600' },
@@ -67,7 +67,7 @@ const KYCVerification = () => {
         ))}
       </div>
 
-      {/* 2. FILTER & SEARCH BAR (Mobile Optimized) */}
+      {/* 2. FILTER & SEARCH BAR  */}
       <div className="bg-white p-3 rounded-xl shadow-lg border border-gray-100 flex flex-col md:flex-row items-center gap-4">
         <div className="flex bg-gray-50 p-1 rounded-lg gap-1 w-full md:w-auto overflow-x-auto no-scrollbar">
           {['All', 'Pending', 'Approved', 'Rejected'].map((tab) => (
@@ -94,7 +94,7 @@ const KYCVerification = () => {
         </div>
       </div>
 
-      {/* 3. TABLE SECTION (With Horizontal Scroll for Mobile) */}
+      {/* 3. TABLE SECTION */}
       <div className="bg-white rounded-xl border border-gray-150 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[700px]">
@@ -153,7 +153,7 @@ const KYCVerification = () => {
           </table>
         </div>
 
-        {/* 4. PAGINATION (Mobile Friendly) */}
+        
         <div className="px-4 md:px-6 py-4 bg-white border-t border-gray-50 flex justify-between items-center gap-2">
           <button 
             disabled={currentPage === 1}

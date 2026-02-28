@@ -37,7 +37,7 @@ const BanManagement = () => {
         <div className="sm:ml-auto flex items-center">
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="w-full sm:w-auto bg-blue-600 text-white px-6 py-2.5 rounded-xl  flex items-center justify-center gap-2 shadow-lg hover:scale-105 transition-all"
+            className="w-full sm:w-auto bg-blue-600 text-white px-6 py-2.5 rounded-xl font-medium flex items-center justify-center gap-2 shadow-lg hover:scale-105 transition-all"
           >
             <Plus size={20} strokeWidth={3} /> Create ban
           </button>
@@ -87,10 +87,10 @@ const BanManagement = () => {
           </tbody>
         </table>
       </div>
-{/* --- MODAL (Responsive & Fixed) --- */}
+{/*  MODAL  */}
       {isModalOpen && (
         <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          {/* Background Overlay click to close */}
+          
           <div className="absolute inset-0" onClick={() => setIsModalOpen(false)} />
           
           <div className="bg-white w-full max-w-[480px] rounded-[24px] shadow-2xl flex flex-col relative max-h-[90vh] overflow-hidden animate-in zoom-in-95 duration-200">
@@ -111,7 +111,7 @@ const BanManagement = () => {
               </button>
             </div>
 
-            {/* Modal Body - Scrollable Area */}
+            {/* Modal Body  */}
             <div className="px-6 md:px-8 pb-6 overflow-y-auto">
               <p className="text-[13px] text-blue-600 font-medium mb-6 bg-blue-50/50 p-4 rounded-xl border border-blue-100/50 leading-relaxed">
                 Task 93: User ban. Use banType "device" or "ip" and notes for device/IP until schema extends.
@@ -144,15 +144,15 @@ const BanManagement = () => {
               </div>
             </div>
 
-            {/* Modal Footer - Fixed at bottom */}
+            {/* Modal Footer */}
             <div className="p-6 md:p-8 bg-gray-50/50 border-t border-gray-100 flex gap-3 sticky bottom-0">
               <button 
                 onClick={() => setIsModalOpen(false)} 
-                className="flex-1 py-3.5 font-bold border border-gray-200 rounded-xl text-slate-600 bg-white hover:bg-gray-100 transition-all"
+                className="flex-1 py-3.5 font-medium border border-gray-200 rounded-xl text-slate-600 bg-white hover:bg-gray-100 transition-all"
               >
                 Cancel
               </button>
-              <button className="flex-1 py-3.5 font-bold bg-blue-600 text-white rounded-xl shadow-lg shadow-blue-200 hover:bg-blue-700 active:scale-95 transition-all">
+              <button className="flex-1 py-3.5 font-medium bg-blue-600 text-white rounded-xl shadow-lg shadow-blue-200 hover:bg-blue-700 active:scale-95 transition-all">
                 Create ban
               </button>
             </div>

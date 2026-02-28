@@ -33,7 +33,7 @@ const RelationshipCP = () => {
   return (
     <div className="space-y-6 animate-in fade-in duration-500 px-4 md:px-0 pb-10">
       
-      {/* Header Section - Responsive Flex */}
+      {/* Header Section */}
       <div className="flex flex-row items-center justify-between gap-4">
         <h1 className="text-[14px] md:text-[16px] font-bold text-blue-600 leading-tight">
           Relationship & CP (Phase 2B)
@@ -41,14 +41,14 @@ const RelationshipCP = () => {
         
         <button 
           onClick={handleRefresh}
-          className="flex items-center gap-2 bg-blue-600 text-white px-4 md:px-5 py-2 rounded-lg font-bold text-sm hover:bg-blue-700 transition-all shadow-sm active:scale-95 shrink-0"
+          className="flex items-center gap-2 bg-blue-600 text-white px-4 md:px-5 py-2 rounded-lg font-medium text-sm hover:bg-blue-600 transition-all shadow-sm active:scale-95 shrink-0"
         >
           <RefreshCw size={18} className={loading ? 'animate-spin' : ''} />
           <span className="hidden sm:inline">Refresh</span>
         </button>
       </div>
 
-      {/* Tabs Section - Mobile Scrollable */}
+      {/* Tabs Section  */}
       <div className="flex overflow-x-auto pb-1 md:pb-0 gap-2 no-scrollbar">
         <div className="flex bg-white p-1 rounded-xl shadow-sm border border-gray-200 min-w-max">
           {tabs.map((tab) => (
@@ -67,7 +67,7 @@ const RelationshipCP = () => {
         </div>
       </div>
 
-      {/* Table Section - Responsive Scroll Wrapper */}
+      {/* Table Section  */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden min-h-[300px]">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[800px]">

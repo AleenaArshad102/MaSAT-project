@@ -57,7 +57,7 @@ const BankManagement = () => {
         
         <div className="bg-white rounded-[24px] shadow-sm border border-gray-100 overflow-hidden animate-in slide-in-from-bottom-4 duration-300">
           <div className="p-6 md:p-8 space-y-8">
-            <h2 className="text-[20px] font-bold text-slate-800">Add New Bank</h2>
+            <h2 className="text-[20px] font-medium text-slate-800">Add New Bank</h2>
             
             <div className="space-y-6">
               {/* Active Toggle */}
@@ -129,11 +129,11 @@ const BankManagement = () => {
             <div className="flex flex-col-reverse sm:flex-row justify-end items-center gap-4 sm:gap-6 pt-4">
               <button 
                 onClick={() => setShowForm(false)}
-                className="w-full sm:w-auto text-[15px] font-bold text-gray-400 hover:text-gray-600 transition-colors py-2"
+                className="w-full sm:w-auto text-[15px] font-medium text-gray-400 hover:text-gray-600 transition-colors py-2"
               >
                 Cancel
               </button>
-              <button className="w-full sm:w-auto bg-[#2563eb] text-white px-8 py-3 rounded-2xl font-bold text-[15px] shadow-lg shadow-blue-500/20 hover:bg-blue-700 transition-all active:scale-95">
+              <button className="w-full sm:w-auto bg-[#2563eb] text-white px-8 py-3 rounded-2xl font-medium text-[15px] shadow-lg shadow-blue-500/20 hover:bg-blue-700 transition-all active:scale-95">
                 Save Bank Detail
               </button>
             </div>

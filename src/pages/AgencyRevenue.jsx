@@ -18,7 +18,7 @@ const AgencyRevenue = () => {
     );
   }
 
-  // Dummy data according to the screenshot
+  // Dummy data 
   const agencies = [
     {
       id: '50010',
@@ -34,7 +34,7 @@ const AgencyRevenue = () => {
 
   return (
     <div className="space-y-6 px-2 md:px-0 pb-10">
-      {/* Top Header Card - Mobile Responsive Stack */}
+      
       <div className="bg-white p-4 md:p-6 rounded-[24px] md:rounded-3xl shadow-sm border border-gray-100 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div>
           <h1 className="text-xl md:text-2xl font-black text-slate-800 tracking-tight uppercase">
@@ -46,7 +46,7 @@ const AgencyRevenue = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto">
-          {/* Search Bar - Full width on mobile */}
+      
           <div className="relative w-full sm:w-64">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300" size={18} />
             <input
@@ -58,15 +58,15 @@ const AgencyRevenue = () => {
             />
           </div>
 
-          {/* Create Test Button - Full width on mobile */}
-          <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#1e293b] text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-slate-700 transition-all shadow-sm active:scale-95">
+          
+          <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#1e293b] text-white px-5 py-2.5 rounded-xl font-medium text-sm hover:bg-slate-700 transition-all shadow-sm active:scale-95">
             <Star size={18} />
             Create Test
           </button>
         </div>
       </div>
 
-      {/* Table Section - With horizontal scroll protection */}
+      
       <div className="bg-white rounded-[24px] md:rounded-3xl shadow-sm border border-gray-150 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[800px]">
@@ -83,7 +83,7 @@ const AgencyRevenue = () => {
             <tbody className="divide-y divide-gray-50">
               {agencies.map((agency) => (
                 <tr key={agency.id} className="hover:bg-gray-50/50 transition-colors group">
-                  {/* Agency Name & ID */}
+                  
                   <td className="px-6 py-5">
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white text-lg md:text-xl font-black shadow-lg shadow-blue-100">
@@ -100,7 +100,7 @@ const AgencyRevenue = () => {
                     </div>
                   </td>
 
-                  {/* Region */}
+          
                   <td className="px-6 py-5">
                     <div className="flex items-center gap-2 text-slate-700 font-bold text-sm">
                       <Globe size={16} className="text-blue-500 shrink-0" />
@@ -108,7 +108,7 @@ const AgencyRevenue = () => {
                     </div>
                   </td>
 
-                  {/* Talent */}
+                  
                   <td className="px-6 py-5">
                     <div className="flex items-center gap-2 bg-purple-50 text-purple-600 px-3 py-1.5 rounded-lg w-fit">
                       <Users size={16} />
@@ -116,7 +116,7 @@ const AgencyRevenue = () => {
                     </div>
                   </td>
 
-                  {/* Revenue */}
+              
                   <td className="px-6 py-5 text-center">
                     <div className="font-black text-slate-800 text-base">${agency.revenue}</div>
                     <div className="text-[10px] md:text-[11px] font-bold text-emerald-500 mt-0.5">
@@ -124,14 +124,14 @@ const AgencyRevenue = () => {
                     </div>
                   </td>
 
-                  {/* Status */}
+                  
                   <td className="px-6 py-5 text-center">
                     <span className="inline-block bg-emerald-100 text-emerald-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-tighter">
                       {agency.status}
                     </span>
                   </td>
 
-                  {/* Action */}
+                  
                   <td className="px-6 py-5 text-right">
                     <button className="p-2.5 rounded-xl border border-gray-100 bg-white text-blue-600 hover:bg-blue-600 hover:text-white hover:shadow-md hover:shadow-blue-100 transition-all active:scale-90">
                       <ArrowRight size={20} />

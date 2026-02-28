@@ -3,19 +3,16 @@ import { RefreshCw } from 'lucide-react'
 
 const TribeManagement = () => {
   const [activeTab, setActiveTab] = useState('tribes')
-  const [loading, setLoading] = useState(true);
-
-  // 🔹 Exact Spinner Logic from your files
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 800);
     return () => clearTimeout(timer);
   }, []);
 
-  // 🔹 Exact Spinner Component from your files
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 bordegit add src/pages/Dashboard.jsxr-blue-500"></div>
       </div>
     );
   }
@@ -33,23 +30,23 @@ const TribeManagement = () => {
 
   return (
     <div className="space-y-6 animate-in fade-in duration-500 px-4 md:px-0 pb-10">
-      {/* Header Section - Mobile Optimized */}
+      {/* Header Section */}
       <div className="flex flex-row items-center justify-between gap-4">
         <h1 className="text-[14px] md:text-[16px] font-bold text-blue-600 leading-tight">
           Tribe Management (Phase 2A)
         </h1>
         
-        {/* Fixed Refresh Button: Solid Blue with White Text */}
+        
         <button 
           onClick={handleRefresh}
-          className="flex items-center gap-2 bg-blue-600 text-white px-4 md:px-5 py-2 rounded-lg font-bold text-sm hover:bg-blue-700 transition-all shadow-sm active:scale-95 shrink-0"
+          className="flex items-center gap-2 bg-blue-600 text-white px-4 md:px-5 py-2 rounded-lg font-medium text-sm hover:bg-blue-700 transition-all shadow-sm active:scale-95 shrink-0"
         >
           <RefreshCw size={18} className={loading ? 'animate-spin' : ''} />
           <span className="hidden sm:inline">Refresh</span>
         </button>
       </div>
 
-      {/* Tabs Section - Horizontal Scroll for Mobile */}
+      {/* Tabs Section  */}
       <div className="flex overflow-x-auto pb-1 no-scrollbar">
         <div className="flex bg-white p-1 rounded-xl shadow-sm border border-gray-200 min-w-max">
           {tabs.map((tab) => (
@@ -68,7 +65,7 @@ const TribeManagement = () => {
         </div>
       </div>
 
-      {/* Table Section - Responsive Scroll Wrapper */}
+      {/* Table Section  */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden min-h-[300px]">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[900px]">

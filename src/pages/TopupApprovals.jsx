@@ -5,7 +5,7 @@ const TopupApprovals = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Page load simulation
+    
     const timer = setTimeout(() => setLoading(false), 800);
     return () => clearTimeout(timer);
   }, []);
@@ -21,9 +21,9 @@ const TopupApprovals = () => {
   return (
     <div className="space-y-6 animate-in fade-in duration-500 text-[#334155] px-4 md:px-0 pb-10">
       
-      {/* --- HEADER SECTION (Mobile Responsive) --- */}
+      {/* HEADER SECTION*/}
       <div className="flex items-start md:items-center gap-3">
-        {/* CircleCheckBig Icon with Title */}
+    
         <CheckCircle2 className="text-blue-600 shrink-0 mt-1 md:mt-0" size={28} strokeWidth={2.5} />
         <div>
           <h1 className="text-[22px] md:text-[26px] font-bold text-slate-800 leading-tight">Top-up Approvals</h1>
@@ -33,7 +33,7 @@ const TopupApprovals = () => {
         </div>
       </div>
 
-      {/* --- TABLE SECTION (Responsive Scroll) --- */}
+      {/*  TABLE SECTION */}
       <div className="bg-white rounded-[24px] border border-gray-150 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[900px]">

@@ -32,7 +32,7 @@ const Tickets = () => {
       {/* Empty State Card */}
       <div className="bg-white rounded-[24px] border border-gray-100 shadow-sm min-h-[300px] flex items-center justify-center p-6">
         <div className="flex flex-col items-center justify-center text-center">
-          {/* Subtle Icon Background */}
+          
           <div className="mb-4 p-4 bg-gray-80 rounded-full">
             <Ticket size={40} className="text-gray-300" />
           </div>

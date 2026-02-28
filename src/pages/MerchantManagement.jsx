@@ -549,7 +549,7 @@ const MerchantManagement = () => {
         </div>
       </div>
 
-      {/* Content based on active tab */}
+      
       {activeTab === 'view' && (
         <div className="space-y-4">
           {/* Search */}

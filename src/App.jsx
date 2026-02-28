@@ -12,13 +12,16 @@ import RelationshipCP from './pages/RelationshipCP'
 import RechargeActivity from './pages/RechargeActivity'
 import RoomManagement from './pages/RoomManagement'
 import RoomInvites from './pages/RoomInvites'
+import VIPManagement from './pages/VIPManagement'
 import CoinPackages from './pages/CoinPackages'
+import Settings from './pages/Settings'
+import MerchantManagement from './pages/MerchantManagement'
 import Finance from './pages/Finance'
 import SalaryManagement from './pages/SalaryManagement'
 import BankManagement from './pages/BankManagement'
 import TopupApprovals from './pages/TopupApprovals'
 import WithdrawalApprovals from './pages/WithdrawalApprovals'
-import MerchantManagement from './pages/MerchantManagement'
+
 import Applications from './pages/Applications'
 import KYCVerification from './pages/KYCVerification'
 import BanManagement from './pages/BanManagement'
@@ -148,13 +151,16 @@ function App() {
         <Route path="/recharge-activity" element={<RechargeActivity />} />
         <Route path="/room-management" element={<RoomManagement />} />
         <Route path="/room-invites" element={<RoomInvites />} />
+        <Route path="/vip-levels" element={<VIPManagement />} />
         <Route path="/coin-packages" element={<CoinPackages />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/merchants" element={<MerchantManagement />} />
         <Route path="/finance" element={<Finance />} />
         <Route path="/salary-management" element={<SalaryManagement />} />
         <Route path="/bank-management" element={<BankManagement />} />
         <Route path="/topup-approvals" element={<TopupApprovals />} />
         <Route path="/withdrawal-approvals" element={<WithdrawalApprovals />} />
-        <Route path="/merchants" element={<MerchantManagement />} />
+        
         <Route path="/applications" element={<Applications />} />
         <Route path="/kyc-verification" element={<KYCVerification />} />
         <Route path="/ban-management" element={<BanManagement />} />

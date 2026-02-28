@@ -317,14 +317,14 @@ const Applications = () => {
                       <div className="flex gap-2 ml-4">
                         <button
                           onClick={() => handleApproveHost(app)}
-                          className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+                          className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700"
                         >
                           <Check size={18} />
                           Approve
                         </button>
                         <button
                           onClick={() => handleRejectHost(app)}
-                          className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                          className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white text-sm rounded-lg hover:bg-red-700"
                         >
                           <X size={18} />
                           Reject

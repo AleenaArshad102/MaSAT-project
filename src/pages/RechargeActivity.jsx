@@ -28,7 +28,7 @@ const RechargeActivity = () => {
       {/* 1. Top Header Card */}
       <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex justify-between items-center">
         <div className="flex items-center gap-3">
-          {/* Orange Gift Icon */}
+          
           <Gift className="text-[#f59e0b]" size={24} strokeWidth={2.5} />
           <h1 className="text-[24px] font-bold text-slate-800 ">
             Recharge Activity Management
@@ -38,7 +38,7 @@ const RechargeActivity = () => {
         
         <button 
           onClick={handleRefresh}
-          className="flex items-center gap-2 bg-[#f59e0b] text-white px-5 py-2 rounded-xl font-bold text-[14px] hover:bg-orange-500 transition-all shadow-md active:scale-95"
+          className="flex items-center gap-2 bg-[#f59e0b] text-white px-5 py-2 rounded-xl font-medium text-[14px] hover:bg-orange-500 transition-all shadow-md active:scale-95"
         >
           <RefreshCw size={18} strokeWidth={2.5} />
           <span>Refresh</span>

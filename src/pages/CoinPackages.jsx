@@ -25,21 +25,21 @@ const CoinPackages = () => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white p-4 md:p-5 rounded-xl shadow-sm border border-gray-100 gap-4">
         <div className="flex items-center gap-3">
           <Coins className="text-[#2563eb] shrink-0" size={28} strokeWidth={2.5} />
-          <h1 className="text-[20px] md:text-[24px] font-bold text-slate-800 leading-tight">
+          <h1 className="text-[20px] md:text-[24px] font-bold text-slate-800 ">
             Coin Package Management
           </h1>
         </div>
 
         <button 
           onClick={() => setShowModal(true)}
-          className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#2563eb] text-white px-5 py-2.5 rounded-lg font-bold text-[14px] hover:bg-blue-700 transition-all shadow-md active:scale-95"
+          className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#2563eb] text-white px-5 py-2.5 rounded-lg font-medium text-[14px] hover:bg-blue-700 transition-all shadow-md active:scale-95"
         >
           <Plus size={20} />
           <span>Add Package</span>
         </button>
       </div>
 
-      {/* --- TABLE SECTION (Responsive Scroll) --- */}
+      {/*  TABLE SECTION */}
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[900px]">
@@ -67,7 +67,7 @@ const CoinPackages = () => {
         </div>
       </div>
 
-      {/* --- CREATE COIN PACKAGE MODAL (Responsive Width & Height) --- */}
+      {/* COIN PACKAGE  */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4 md:p-6">
           <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden animate-in zoom-in duration-200 flex flex-col max-h-[90vh]">
@@ -80,10 +80,10 @@ const CoinPackages = () => {
               </button>
             </div>
 
-            {/* Modal Body (Scrollable with fixed footer) */}
+            {/* Modal  */}
             <div className="p-6 space-y-4 overflow-y-auto custom-scrollbar">
               
-              {/* Product ID */}
+              
               <div>
                 <label className="block text-[13px]  text-slate-700 mb-1">
                   Product ID <span className="text-red-500">*</span>
@@ -92,7 +92,7 @@ const CoinPackages = () => {
                 <p className="text-[11px] text-gray-500 mt-1">Must match Google Play product ID</p>
               </div>
 
-              {/* Display Name */}
+              
               <div>
                 <label className="block text-[13px]  text-slate-700 mb-1">
                   Display Name <span className="text-red-500">*</span>
@@ -100,7 +100,7 @@ const CoinPackages = () => {
                 <input type="text" placeholder="e.g., 100 Coins" className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500/10" />
               </div>
 
-              {/* Coins Amount */}
+              
               <div>
                 <label className="block text-[13px]  text-slate-700 mb-1">
                   Coins <span className="text-red-500">*</span>
@@ -108,7 +108,7 @@ const CoinPackages = () => {
                 <input type="number" defaultValue="100" className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none" />
               </div>
 
-              {/* Price */}
+            
               <div>
                 <label className="block text-[13px]  text-slate-700 mb-1">
                   Price (USD)
@@ -116,7 +116,7 @@ const CoinPackages = () => {
                 <input type="text" placeholder="0.99" className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none" />
               </div>
 
-              {/* Description */}
+              
               <div>
                 <label className="block text-[13px]  text-slate-700 mb-1">
                   Description
@@ -124,7 +124,7 @@ const CoinPackages = () => {
                 <textarea rows="3" placeholder="Package description" className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none resize-none"></textarea>
               </div>
 
-              {/* Platform Dropdown */}
+              
               <div>
                 <label className="block text-[13px]  text-slate-700 mb-1">
                   Platform
@@ -157,15 +157,15 @@ const CoinPackages = () => {
               </div>
             </div>
 
-            {/* Modal Footer (Sticky) */}
+            {/* Modal Footer*/}
             <div className="p-4 border-t border-gray-100 flex justify-end gap-3 shrink-0 bg-gray-50/50">
               <button 
                 onClick={() => setShowModal(false)}
-                className="px-6 py-2 rounded-lg font-bold text-slate-600 hover:bg-gray-50 border border-gray-200 transition-all text-sm"
+                className="px-6 py-2 rounded-lg font-medium text-slate-600 hover:bg-gray-50 border border-gray-200 transition-all text-sm"
               >
                 Cancel
               </button>
-              <button className="px-8 py-2 bg-[#2563eb] text-white rounded-lg font-bold hover:bg-blue-700 shadow-md transition-all text-sm">
+              <button className="px-8 py-2 bg-[#2563eb] text-white rounded-lg font-medium hover:bg-blue-700 shadow-md transition-all text-sm">
                 Save
               </button>
             </div>

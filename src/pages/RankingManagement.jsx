@@ -5,7 +5,7 @@ import {
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom';
 
-/* ---------------- MOCK DATA GENERATOR (125 Levels) ---------------- */
+/* MOCK DATA (125 Levels) */
 const MOCK_LEVELS = Array.from({ length: 125 }, (_, i) => ({
   level: `Lv.${i}`,
   wealthBadge: null,
@@ -42,7 +42,7 @@ const RankingManagement = () => {
   return (
     <div className="space-y-4 pb-10 text-[#334155] px-2 md:px-0">
       
-      {/* 1. TOP HEADER - Responsive Stack */}
+      
       <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div className="flex items-center gap-2">
           <RefreshCw className="text-[#9333ea] shrink-0" size={20} />
@@ -52,14 +52,14 @@ const RankingManagement = () => {
         </div>
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#9333ea] text-white px-4 py-2.5 rounded-lg font-bold text-[13px] hover:bg-purple-700 transition-all shadow-md active:scale-95"
+          className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#9333ea] text-white px-4 py-2.5 rounded-lg font-medium text-[13px] hover:bg-purple-700 transition-all shadow-md active:scale-95"
         >
           <RefreshCw size={16} />
           Generate Defaults
         </button>
       </div>
 
-      {/* 2. TRIBE SECTION - Responsive Button */}
+      {/* 2. TRIBE SECTION  */}
       <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 space-y-3">
         <div className="flex flex-col sm:flex-row sm:items-center gap-3">
           <div className="flex items-center gap-2">
@@ -68,7 +68,7 @@ const RankingManagement = () => {
           </div>
           <button 
             onClick={() => navigate('/tribes')} 
-            className="flex items-center justify-center gap-2 bg-[#f59e0b] text-white px-3 py-2 rounded-md font-bold text-[12px] hover:bg-orange-600 transition-all active:scale-95 w-full sm:w-auto"
+            className="flex items-center justify-center gap-2 bg-[#f59e0b] text-white px-3 py-2 rounded-md font-medium text-[12px] hover:bg-orange-600 transition-all active:scale-95 w-full sm:w-auto"
           >
             <Medal size={16} /> 
             <span>View Tribes & Levels</span>
@@ -79,7 +79,7 @@ const RankingManagement = () => {
         </p>
       </div>
 
-      {/* 3. WCR RANKINGS - Grid 1 col on mobile, 3 on desktop */}
+      {/* 3. WCR RANKINGS  */}
       <div className="bg-white p-4 md:p-5 rounded-xl shadow-sm border border-gray-100 space-y-4">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="flex items-center gap-2">
@@ -93,7 +93,7 @@ const RankingManagement = () => {
               <option>Monthly</option>
             </select>
             <input type="text" placeholder="Country" className="flex-1 min-w-[100px] px-3 py-1.5 border border-gray-200 rounded-lg text-[13px] outline-none" />
-            <button className="w-full sm:w-auto bg-[#f59e0b] text-white px-4 py-1.5 rounded-lg font-bold text-[13px] flex items-center justify-center gap-1">
+            <button className="w-full sm:w-auto bg-[#f59e0b] text-white px-4 py-1.5 rounded-lg font-medium text-[13px] flex items-center justify-center gap-1">
               <RefreshCw size={14} /> Refresh
             </button>
           </div>
@@ -122,7 +122,7 @@ const RankingManagement = () => {
           <div className="flex flex-wrap gap-2">
             <select className="flex-1 px-3 py-1.5 border border-gray-200 rounded-lg text-[13px] bg-white outline-none"><option>Weekly</option><option>Monthly</option></select>
             <input type="text" placeholder="Country" className="flex-1 px-3 py-1.5 border border-gray-200 rounded-lg text-[13px] outline-none" />
-            <button className="w-full sm:w-auto bg-[#7c3aed] text-white px-4 py-1.5 rounded-lg font-bold text-[13px] flex items-center justify-center gap-1"><RefreshCw size={14} /> Refresh</button>
+            <button className="w-full sm:w-auto bg-[#7c3aed] text-white px-4 py-1.5 rounded-lg font-medium text-[13px] flex items-center justify-center gap-1"><RefreshCw size={14} /> Refresh</button>
           </div>
         </div>
         <div className="border border-gray-200 rounded-2xl overflow-hidden bg-white">
@@ -142,7 +142,7 @@ const RankingManagement = () => {
         </div>
       </div>
 
-      {/* 5. LEVELS TABLE - Safe Scroll */}
+      {/* 5. LEVELS TABLE */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden mt-6">
         <div className="overflow-x-auto">
           <table className="w-full text-left min-w-[900px]">
@@ -201,7 +201,7 @@ const RankingManagement = () => {
           </table>
         </div>
 
-        {/* PAGINATION - Mobile Stackable */}
+        {/* PAGINATION  */}
         <div className="px-6 py-4 bg-white border-t border-gray-100 flex flex-col sm:flex-row gap-4 justify-between items-center">
           <button 
             disabled={currentPage === 1}
@@ -218,14 +218,14 @@ const RankingManagement = () => {
           <button 
             disabled={currentPage === totalPages}
             onClick={() => setCurrentPage(prev => prev + 1)}
-            className="w-full sm:w-auto flex items-center justify-center gap-1 px-4 py-2 border border-gray-200 rounded text-[12px] font-bold text-slate-700 hover:bg-gray-50 disabled:opacity-50"
+            className="w-full sm:w-auto flex items-center justify-center gap-1 px-4 py-2 border border-gray-200  rounded text-[12px] font-medium text-slate-700 hover:bg-gray-50 disabled:opacity-50"
           >
             Next <ChevronRight size={14} />
           </button>
         </div>
       </div>
 
-      {/* MODAL - Fully Responsive */}
+      {/* MODAL - */}
       {isModalOpen && (
         <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-[4px]" onClick={() => setIsModalOpen(false)} />
@@ -246,10 +246,10 @@ const RankingManagement = () => {
                 </span>
               </div>
               <div className="flex w-full gap-3">
-                <button onClick={() => setIsModalOpen(false)} className="flex-1 py-3.5 border-2 border-slate-100 rounded-2xl text-slate-500 font-bold text-[14px] hover:bg-slate-50 transition-colors">
+                <button onClick={() => setIsModalOpen(false)} className="flex-1 py-3.5 border-2 border-slate-100 rounded-2xl text-slate-500 font-medium text-[14px] hover:bg-slate-50 transition-colors">
                   Cancel
                 </button>
-                <button onClick={() => setIsModalOpen(false)} className="flex-1 py-3.5 bg-[#a855f7] text-white rounded-2xl font-bold text-[14px] shadow-lg shadow-purple-200 hover:bg-[#9333ea] transition-all active:scale-95">
+                <button onClick={() => setIsModalOpen(false)} className="flex-1 py-3.5 bg-[#a855f7] text-white rounded-2xl font-medium text-[14px] shadow-lg shadow-purple-200 hover:bg-[#9333ea] transition-all active:scale-95">
                   Confirm
                 </button>
               </div>

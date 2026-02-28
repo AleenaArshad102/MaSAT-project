@@ -17,7 +17,7 @@ const Finance = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Dropdown close karne ke liye jab bahar click ho
+  
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -103,7 +103,7 @@ const Finance = () => {
           <h2 className="text-xl font-bold text-slate-800">Financial Ledger</h2>
           <p className="text-sm text-gray-400">Track all coin transfers and platform economy</p>
         </div>
-        <button className="flex items-center gap-2 bg-slate-900 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-lg">
+        <button className="flex items-center gap-2 bg-slate-900 text-white px-5 py-2.5 rounded-xl text-sm font-medium shadow-lg">
           <Download size={18} /> Export Data
         </button>
       </div>
@@ -122,7 +122,7 @@ const Finance = () => {
             <ChevronDown size={18} className={`text-gray-400 transition-transform ${showDropdown ? 'rotate-180' : ''}`} />
           </button>
 
-          {/* Actual Dropdown Menu */}
+          
           {showDropdown && (
             <div className="absolute top-full mt-2 w-full bg-white border border-gray-100 shadow-xl rounded-xl overflow-hidden py-1 animate-in zoom-in-95 duration-100">
               {transactionOptions.map((option) => (

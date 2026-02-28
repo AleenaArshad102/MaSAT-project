@@ -3,7 +3,7 @@ import { Search, Filter, ChevronLeft, ChevronRight, Edit2, Ban, CheckCircle } fr
 import { RoleBadge } from '../components/RoleSelect'
 import { format } from 'date-fns'
 
-/* ---------------- MOCK DATABASE ---------------- */
+/* MOCK DATABASE */
 const MOCK_USERS = Array.from({ length: 137 }, (_, i) => ({
   userId: `U${1000 + i}`,
   name: `User ${i + 1}`,
@@ -19,7 +19,7 @@ const MOCK_USERS = Array.from({ length: 137 }, (_, i) => ({
 
 const PAGE_SIZE = 50
 
-/* ---------------- COMPONENT ---------------- */
+
 const UserManagement = () => {
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(true)
@@ -131,7 +131,7 @@ const UserManagement = () => {
 
   return (
     <div className="space-y-6 px-2 md:px-0 pb-10">
-      {/* Search and Filter Bar - Responsive Stack */}
+      
       <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 space-y-4">
         <div className="flex flex-col lg:flex-row gap-4">
           <div className="flex-1 flex flex-col sm:flex-row gap-2">
@@ -147,7 +147,7 @@ const UserManagement = () => {
             </div>
             <button
               onClick={handleSearch}
-              className="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center justify-center gap-2 font-bold text-[14px] transition-all active:scale-95"
+              className="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center justify-center gap-2 font-medium text-[14px] transition-all active:scale-95"
             >
               <Search size={18} />
               Search
@@ -174,7 +174,7 @@ const UserManagement = () => {
         </div>
       </div>
 
-      {/* Users Table - Scroll Safety */}
+      
       <div className="bg-white shadow-sm rounded-xl border border-gray-100 overflow-hidden">
         <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
           <h3 className="text-[16px] font-bold text-slate-800">
@@ -256,7 +256,7 @@ const UserManagement = () => {
                 <button
                   onClick={() => loadUsers()}
                   disabled={!lastEvaluatedKey || lastEvaluatedKey <= PAGE_SIZE}
-                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 rounded-lg bg-white text-[13px] font-bold text-gray-600 hover:bg-gray-100 disabled:opacity-50"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 rounded-lg bg-white text-[13px] font-medium text-gray-600 hover:bg-gray-100 disabled:opacity-50"
                 >
                   <ChevronLeft size={18} />
                   Previous
@@ -264,7 +264,7 @@ const UserManagement = () => {
                 <button
                   onClick={() => loadUsers(lastEvaluatedKey)}
                   disabled={!hasMore}
-                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 border border-blue-600 rounded-lg bg-blue-600 text-white text-[13px] font-bold hover:bg-blue-700 disabled:opacity-50 shadow-sm"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 border border-blue-600 rounded-lg bg-blue-600 text-white text-[13px] font-medium hover:bg-blue-700 disabled:opacity-50 shadow-sm"
                 >
                   Next
                   <ChevronRight size={18} />

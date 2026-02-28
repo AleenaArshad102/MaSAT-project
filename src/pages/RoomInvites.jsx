@@ -33,16 +33,16 @@ const RoomInvites = () => {
 
         <button 
           onClick={handleRefresh}
-          className="flex items-center gap-2 bg-[#2563eb] text-white px-4 py-2 rounded-lg font-bold text-[13px] md:text-[14px] hover:bg-blue-700 transition-all shadow-sm active:scale-95 shrink-0"
+          className="flex items-center gap-2 bg-[#2563eb] text-white px-4 py-2 rounded-lg font-medium text-[13px] md:text-[14px] hover:bg-blue-700 transition-all shadow-sm active:scale-95 shrink-0"
         >
           <RefreshCw size={18} strokeWidth={2.5} className={loading ? 'animate-spin' : ''} />
           <span className="hidden sm:inline">Refresh</span>
         </button>
       </div>
 
-      {/* --- FILTERS SECTION (Stacking on Mobile) --- */}
+      {/* FILTERS  */}
       <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3">
-        {/* Status Dropdown */}
+      
         <div className="relative group flex-1 md:flex-none">
           <select className="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-10 text-sm font-normal outline-none focus:ring-2 focus:ring-blue-500/10 transition-all cursor-pointer w-full md:w-40">
             <option>All statuses</option>
@@ -55,14 +55,14 @@ const RoomInvites = () => {
           </div>
         </div>
 
-        {/* Filter by User ID */}
+    
         <input 
           type="text" 
           placeholder="Filter by To User ID" 
           className="bg-white border border-gray-300 rounded-lg px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500/10 w-full md:w-48 placeholder:text-gray-400"
         />
 
-        {/* Filter by Room Name */}
+        
         <input 
           type="text" 
           placeholder="Filter by Room ID / Name" 
@@ -70,7 +70,7 @@ const RoomInvites = () => {
         />
       </div>
 
-      {/* --- TABLE SECTION (Responsive Scroll) --- */}
+      {/* TABLE SECTION  */}
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[800px]">

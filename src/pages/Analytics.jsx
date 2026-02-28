@@ -45,7 +45,7 @@ const Analytics = () => {
         <div className="space-y-2 text-center md:text-left">
           <div className="flex items-center justify-center md:justify-start gap-3">
              <Activity className="text-blue-600" size={32} />
-             <h1 className="text-2xl md:text-4xl font-black text-slate-800  uppercase">Platform Analytics</h1>
+             <h1 className="text-1xl md:text-4xl font-black text-slate-800  uppercase">Platform Analytics</h1>
           </div>
           <p className="text-gray-400 font-medium text-sm md:text-lg">Real-time ecosystem metrics and system intelligence</p>
         </div>
@@ -142,7 +142,7 @@ const Analytics = () => {
   );
 };
 
-// --- Helper Components ---
+
 
 const StatCard = ({ label, value, subText, icon, iconBg }) => (
   <div className="bg-white p-6 rounded-[24px] border border-gray-100 shadow-sm flex justify-between items-center group hover:border-blue-100 transition-all">
