@@ -36,7 +36,7 @@ const BankManagement = () => {
         {!showForm && (
           <button 
             onClick={() => setShowForm(true)}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#2563eb] text-white px-5 py-2.5 rounded-xl font-bold text-[14px] hover:bg-blue-700 transition-all shadow-md active:scale-95"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#2563eb] text-white px-5 py-2.5 rounded-xl font-medium text-[14px] hover:bg-blue-700 transition-all shadow-md active:scale-95"
           >
             <Plus size={20} />
             <span>Add New Bank</span>

@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { LayoutDashboard, Power, CheckCircle2, Settings,  Crown, Landmark, Ticket, Banknote, Ban, FileCheck,  Mail, Gift, Coins, Users, Shield, Store, FileText, LogOut, Menu, X , Medal, DollarSign, Heart, BarChart3} from 'lucide-react'
+import { LayoutDashboard, Power, CheckCircle2, Settings,   Crown, Landmark, Ticket, Banknote, Ban, FileCheck,  Mail, Gift, Coins, Users, Shield, Store, FileText, LogOut, Menu, X , Medal, DollarSign, Heart, BarChart3} from 'lucide-react'
 import { useState } from 'react'
 
 const Layout = ({ children, user, signOut }) => {
@@ -18,6 +18,7 @@ const Layout = ({ children, user, signOut }) => {
     { name: 'Recharge Activity', href: '/recharge-activity', icon: Gift },
     { name: 'Room Management', href: '/room-management', icon: Power },
     { name: 'Room Invites', href: '/room-invites', icon: Mail },
+    { name: 'Store & Gifting', href: '/store-gifting', icon: Store },
     { name: 'VIP & SVIP Levels', href: '/vip-levels', icon: Crown },
     { name: 'Coin Packages', href: '/coin-packages', icon: Coins },
     { name: 'Settings', href: '/settings', icon: Settings },

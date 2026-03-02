@@ -12,6 +12,7 @@ import RelationshipCP from './pages/RelationshipCP'
 import RechargeActivity from './pages/RechargeActivity'
 import RoomManagement from './pages/RoomManagement'
 import RoomInvites from './pages/RoomInvites'
+import StoreGifting from './pages/StoreGifting';
 import VIPManagement from './pages/VIPManagement'
 import CoinPackages from './pages/CoinPackages'
 import Settings from './pages/Settings'
@@ -151,6 +152,7 @@ function App() {
         <Route path="/recharge-activity" element={<RechargeActivity />} />
         <Route path="/room-management" element={<RoomManagement />} />
         <Route path="/room-invites" element={<RoomInvites />} />
+        <Route path="/store-gifting" element={<StoreGifting />} />
         <Route path="/vip-levels" element={<VIPManagement />} />
         <Route path="/coin-packages" element={<CoinPackages />} />
         <Route path="/settings" element={<Settings />} />
