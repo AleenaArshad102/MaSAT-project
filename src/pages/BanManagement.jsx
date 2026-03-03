@@ -50,9 +50,14 @@ const BanManagement = () => {
           <select className="flex-1 md:w-auto bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-slate-700 outline-none">
             <option>All status</option>
             <option>Active</option>
+            <option>Revoked</option>
+            <option>Expired</option>
           </select>
           <select className="flex-1 md:w-auto bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-slate-700 outline-none">
             <option>All types</option>
+            <option>User</option>
+            <option>Device</option>
+            <option>IP</option>
           </select>
         </div>
         

@@ -19,7 +19,7 @@ const PAGE_SIZE = 3
 
 const KYCVerification = () => {
   const [currentPage, setCurrentPage] = useState(1)
-  const [activeTab, setActiveTab] = useState('Pending');
+  const [activeTab, setActiveTab] = useState('All');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

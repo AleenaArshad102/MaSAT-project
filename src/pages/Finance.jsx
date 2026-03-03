@@ -152,7 +152,7 @@ const Finance = () => {
         <div className="overflow-x-auto">
           <table className="w-full text-left min-w-[900px]">
             <thead>
-              <tr className="text-[11px] font-bold text-gray-400 uppercase  bg-gray-100">
+              <tr className="text-[11px] font-bold text-gray-600 uppercase  bg-gray-150">
                 <th className="px-8 py-5">Transaction ID</th>
                 <th className="px-6 py-5">Category</th>
                 <th className="px-6 py-5">Involved Parties</th>

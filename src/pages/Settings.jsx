@@ -10,6 +10,14 @@ const Settings = () => {
   const [isBannerModalOpen, setIsBannerModalOpen] = useState(false);
   const [showIAPSecret, setShowIAPSecret] = useState(false);
   const [showAgoraCertificate, setShowAgoraCertificate] = useState(false);
+  const [roomThemeImage, setRoomThemeImage] = useState(null);
+const [tintColor, setTintColor] = useState('#0F1423');
+  
+const [rankingData, setRankingData] = useState({
+  Wealth: { color: '#AA2006', image: null },
+  Charm: { color: '#024D9C', image: null },
+  Room: { color: '#A76202', image: null }
+});
   
 
   useEffect(() => {
@@ -250,8 +258,7 @@ const Settings = () => {
 
   </div>
 </section>
-
-     {/* 4. Room Theme Settings  */}
+{/* 4. Room Theme Settings */}
 <section className="bg-white p-6 rounded-[24px] border border-gray-100 shadow-sm space-y-6">
   {/* Header Section */}
   <div className="space-y-1.5">
@@ -264,21 +271,32 @@ const Settings = () => {
     </p>
   </div>
 
-  {/* MAIN FORM  */}
+  {/* MAIN FORM */}
   <div className="space-y-6">
     <div className="space-y-2">
       <label className="text-sm font-semibold text-slate-800">Default Room Theme Image (S3)</label>
       <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-        <button className="bg-primary-blue text-white px-5 py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-blue-700 transition-all shadow-sm active:scale-95">
-          <ImageIcon size={18} /> S3 Select
-        </button>
-        <span className="text-xs text-gray-400">No theme image selected. Rooms will use placeholder.</span>
+        <div className="flex gap-2">
+          <button className="bg-primary-blue text-white px-5 py-2.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-blue-700 transition-all shadow-sm active:scale-95">
+            <ImageIcon size={18} /> S3 Select
+          </button>
+          
+          {/* Clear Button added here */}
+          <button 
+            onClick={() => setRoomThemeImage(null)}
+            className="bg-gray-100 text-gray-600 px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-gray-200 transition-all"
+          >
+            Clear
+          </button>
+        </div>
+        <span className="text-xs text-gray-400">
+          {roomThemeImage ? "Custom theme selected." : "No theme image selected. Rooms will use placeholder."}
+        </span>
       </div>
     </div>
 
-    {/* Overlay and Tint - Responsive Grid */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {/* Overlay Opacity */}
+      
       <div className="space-y-2">
         <label className="text-sm font-semibold text-slate-800">Overlay Opacity (0-1)</label>
         <input 
@@ -289,16 +307,22 @@ const Settings = () => {
         <p className="text-xs text-gray-500">Background image opacity (0.0 = transparent, 1.0 = opaque)</p>
       </div>
       
-      {/* Tint Color */}
+      {/* Tint Color with Preview Box */}
       <div className="space-y-2">
         <label className="text-sm font-semibold text-slate-800">Tint Color (Hex)</label>
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           <input 
             type="text" 
+            value={tintColor}
+            onChange={(e) => setTintColor(e.target.value)}
             placeholder="#0F1423" 
             className="w-full p-3 rounded-xl border border-gray-200 bg-gray-50/50 outline-none text-sm font-mono focus:ring-2 focus:ring-blue-100" 
           />
-          
+          {/* Color Preview Box */}
+          <div 
+            className="w-12 h-12 rounded-xl border border-gray-100 shadow-sm shrink-0 transition-colors duration-200" 
+            style={{ backgroundColor: tintColor }}
+          ></div>
         </div>
         <p className="text-xs text-gray-500">Background color used as fallback/overlay</p>
       </div>
@@ -329,7 +353,7 @@ const Settings = () => {
 <section className="bg-white p-6 rounded-[24px] border border-gray-100 shadow-sm space-y-6">
   {/* Main Header */}
   <div className="space-y-1.5">
-    <div className="flex items-center gap-2 text-primary-blue font-bold text-lg">
+    <div className="flex items-center gap-2 text-blue-600 font-bold text-lg">
       <Palette size={22} /> <h2>Rankings Defaults</h2>
     </div>
     <p className="text-sm text-gray-600 leading-relaxed max-w-1xl">
@@ -339,35 +363,64 @@ const Settings = () => {
 
   <div className="space-y-6">
     {['Wealth', 'Charm', 'Room'].map((tab) => (
-    
       <div key={tab} className="p-5 border border-gray-200 rounded-[20px] bg-white space-y-4">
         <h3 className="font-bold text-slate-800 text-base">{tab}</h3>
       
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
+          {/* Image Selection Section */}
           <div className="space-y-2">
             <label className="text-sm font-semibold text-slate-800 ">Background Image (S3)</label>
-            <div className="flex flex-col gap-2">
-              <button className="w-fit bg-primary-blue text-white px-5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 hover:bg-blue-700 shadow-sm transition-all">
-                <ImageIcon size={14}/> Select
-              </button>
-              <p className="text-[11px]  text-gray-400">No image. App will use default.</p>
+            <div className="flex items-center gap-3">
+              {rankingData[tab].image && (
+                <div className="w-12 h-12 rounded-lg overflow-hidden border border-gray-200">
+                  <img src={rankingData[tab].image} alt="preview" className="w-full h-full object-cover" />
+                </div>
+              )}
+              <div className="flex gap-2">
+                <button 
+                  className="bg-blue-600 text-white px-5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 hover:bg-blue-700 shadow-sm transition-all"
+                  onClick={() => {/* Yahan aapka image upload logic aayega */}}
+                >
+                  <ImageIcon size={14}/> Select
+                </button>
+                <button 
+                  onClick={() => setRankingData(prev => ({ ...prev, [tab]: { ...prev[tab], image: null } }))}
+                  className="bg-gray-100 text-gray-600 px-4 py-2 rounded-xl text-xs font-bold hover:bg-gray-200 transition-all"
+                >
+                  Clear
+                </button>
+              </div>
             </div>
+            <p className="text-[11px] text-gray-400">
+              {rankingData[tab].image ? 'Custom image selected.' : 'No image. App will use default.'}
+            </p>
           </div>
 
-          
+          {/* Color Selection Section */}
           <div className="space-y-2">
             <label className="text-sm font-semibold text-slate-800 ">Screen / Card Color (Hex)</label>
             <div className="flex gap-3">
               <div className="relative flex-1">
                 <input 
                   type="text" 
-                  placeholder="#b71c1c" 
+                  value={rankingData[tab].color}
+                  onChange={(e) => {
+                    const newColor = e.target.value;
+                    setRankingData(prev => ({
+                      ...prev,
+                      [tab]: { ...prev[tab], color: newColor }
+                    }));
+                  }}
+                  placeholder="#ffffff" 
                   className="w-full p-2.5 rounded-xl border border-gray-200 bg-white outline-none text-sm font-mono focus:ring-2 focus:ring-blue-100" 
                 />
               </div>
-          
-              <div className="w-11 h-11 rounded-xl border border-gray-100 shadow-sm shrink-0" style={{backgroundColor: '#b71c1c'}}></div>
+
+              <div 
+                className="w-11 h-11 rounded-xl border border-gray-100 shadow-sm shrink-0 transition-colors duration-200" 
+                style={{ backgroundColor: rankingData[tab].color }}
+              ></div>
             </div>
             <p className="text-[11px] text-gray-400 font-medium ">Background color for ranking list cards</p>
           </div>
@@ -376,8 +429,9 @@ const Settings = () => {
       </div>
     ))}
   </div>
+
   <div className="flex justify-end pt-4">
-    <button className="bg-primary-blue text-white px-8 py-3 rounded-xl font-medium flex items-center gap-2 hover:bg-blue-700 transition-all shadow-sm shadow-blue-100 active:scale-95">
+    <button className="bg-blue-600 text-white px-8 py-3 rounded-xl font-medium flex items-center gap-2 hover:bg-blue-700 transition-all shadow-sm shadow-blue-100 active:scale-95">
       <Save size={18} /> Save Rankings Defaults
     </button>
   </div>
